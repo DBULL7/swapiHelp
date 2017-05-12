@@ -23,9 +23,15 @@ export const peopleCleaner = (obj) => {
         .catch(() => 'error')
 
       fetch(person.species)
-        .then(resp => resp.json())
-        .then(species => acc[person.name].species = species.name)
-        .catch(() => 'error')
+        .then(resp => {
+          // console.log(resp)
+          resp.json()
+        })
+        .then(species => {
+          console.log(species)
+          acc[person.name].species = species.name
+        })
+        .catch((error) => console.log('error'))
     }
     return acc
   }, {})
